@@ -1,0 +1,109 @@
+﻿<local:BasePage x:Class="SalesManager.ThongKeLaiSuat"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SalesManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ThongKeLaiSuat">
+
+    <StackPanel Margin="0,0,0,-286.4">
+        <TextBlock x:Name="Title"
+                TextWrapping="Wrap" 
+                Text="DANH SÁCH HÓA ĐƠN"
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Center" 
+                FontWeight="Bold" 
+                FontSize="36" 
+                FontFamily="{StaticResource MyriadBold}"
+                Foreground="{StaticResource TitleBrush}"
+                Margin="20 20 20 20"
+                />
+        <Grid Height="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox x:Name="SapXep_ComboBox" FontSize="20" Grid.Column="0"  Margin="10,0,10,10" SelectedValuePath="Content">
+                <ComboBoxItem Content="Sắp Xếp Theo Thời Gian"/>
+                <ComboBoxItem Content="Sắp Xếp Theo Giá"/>
+                <ComboBoxItem Content="Sắp Xếp Theo Tiền Lãi"/>
+            </ComboBox>
+            <ComboBox x:Name="SapXepTheo_ComboBox" FontSize="20" Grid.Column="1"  Margin="10,0,10,10" SelectedValuePath="Content">
+                <ComboBoxItem Content="Tăng Dần"/>
+                <ComboBoxItem Content="Giảm Dần"/>
+            </ComboBox>
+            <Border BorderBrush="Black"
+            BorderThickness="0"
+            Margin="10,0,10,0"
+            VerticalAlignment="Center"
+            CornerRadius="5"
+            Grid.Column="2">
+
+                <StackPanel Margin="5"
+                    Orientation="Horizontal">
+
+                    <Image Source="/Images/Logo/Search-icon.png" 
+                   Height="25"/>
+                    <TextBox x:Name="TimKiem_TextBox"
+                       Margin="3 0 0 0" Width="400" FontSize="20"/>
+
+                </StackPanel>
+            </Border>
+        </Grid>
+        <StackPanel>
+            <ListView Margin="10" Name="lvUsers" FontSize="20" Height="500">
+                <ListView.Resources>
+                    <Style TargetType="ListViewItem">
+                        <Style.Triggers>
+                            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                <Setter Property="IsSelected" Value="True"/>
+                            </Trigger>
+                        </Style.Triggers>
+                        <EventSetter Event="PreviewGotKeyboardFocus" Handler="SelectCurrentItem"/>
+                        <Setter Property="Height" Value="30" />
+                        <Setter Property="BorderBrush" Value="Blue"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Background" Value="#E7F8FE"/>
+                    </Style>
+                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="Focusable" Value="false"/>
+                    </Style>
+                    
+                </ListView.Resources>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <EventSetter Event="MouseDoubleClick"  Handler="ListViewItem_MouseDoubleClick"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header = "Mã Hóa Đơn" DisplayMemberBinding = "{Binding MAHD}" Width = "180"></GridViewColumn>
+                        <GridViewColumn Header = "Ngày Hóa Đơn" DisplayMemberBinding = "{Binding NGAY}" Width = "180"></GridViewColumn>
+                        <GridViewColumn Header = "Giá Gốc" DisplayMemberBinding = "{Binding GIAGOC,StringFormat='#,##0'}" Width = "170"></GridViewColumn>
+                        <GridViewColumn Header = "Giá Bán" DisplayMemberBinding = "{Binding GIABAN,StringFormat='#,##0'}" Width = "170"></GridViewColumn>
+                        <GridViewColumn Header = "Tiền Lãi" DisplayMemberBinding = "{Binding TIENLAI,StringFormat='#,##0'}" Width = "170"></GridViewColumn>
+
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="2" x:Name="Sum_Border" Margin="20 5 20 5" Width="400" HorizontalAlignment="Right">
+                    <TextBlock HorizontalAlignment="Center" FontSize="25" Margin="0 3 0 0" >
+                        <Run Text="Tổng lãi: " Foreground="#FF1DB7A4" FontFamily="{StaticResource MyriadBold}"/>
+                        <Run x:Name="TongTien_TextBlock" FontFamily="{StaticResource MyriadRegular}"/>
+                        <Run Text="VND" FontFamily="{StaticResource MyriadBold}"/>
+                    </TextBlock>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </StackPanel>
+</local:BasePage>

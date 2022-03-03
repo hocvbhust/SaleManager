@@ -1,0 +1,173 @@
+﻿<local:BasePage x:Class="SalesManager.XuatHoaDon"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SalesManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="900"
+      Title="XuatHoaDon">
+
+    <Border Background="White">
+        <Grid>
+            <Button 
+                Content="In hóa đơn"
+                x:Name="InHoaDon_Button"
+                Foreground="{StaticResource ForegroundLightBrush}"
+                FontSize="20"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Width="140" Height="40" Margin="0,10,21,0" Click="Button_Click" />
+            <StackPanel Grid.ColumnSpan="2" Margin="0,0,0,-0.4">
+                <Border Margin="10 10 10 10" x:Name="Title" Width="500">
+                    <TextBlock 
+                TextWrapping="Wrap" 
+                Text="PHIẾU THANH TOÁN"
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center" 
+                FontFamily="{StaticResource MyriadBold}" 
+                FontSize="36" 
+                Foreground="{StaticResource TitleBrush}"
+                />
+                </Border>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="1000*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                    HorizontalAlignment="Left"
+                    TextWrapping="Wrap"
+                    Text="Số hóa đơn"
+                    VerticalAlignment="Center"
+                    FontSize="20" Margin="20,5,0,5" Foreground="#FF1DB7A4" Height="23" Width="111" Grid.ColumnSpan="2"
+                    />
+                    <TextBlock x:Name="SoHD" HorizontalAlignment="Left"
+                    TextWrapping="Wrap"
+                    Text=""
+                    VerticalAlignment="Center"
+                    FontSize="20" Height="24" Margin="0,5" Width="669" Grid.ColumnSpan="2" Grid.Column="1"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="300*"/>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="250*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="300*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                    HorizontalAlignment="Left"
+                    TextWrapping="Wrap"
+                    Text="Ngày hóa đơn"
+                    VerticalAlignment="Center"
+                    Margin="20,5,0,5"
+                    FontSize="20" Foreground="#FF1DB7A4" Height="24" Width="126" Grid.ColumnSpan="2"
+                    />
+                    <TextBlock x:Name="NgHD" HorizontalAlignment="Left"
+                    TextWrapping="Wrap"
+                    Text=""
+                    VerticalAlignment="Center"
+                    FontSize="20" Height="24" Margin="0,5" Width="282" Grid.ColumnSpan="3" Grid.Column="1"/>
+                    <TextBlock
+                    HorizontalAlignment="Left"
+                    Grid.Column="4"
+                    TextWrapping="Wrap"
+                    Text="Tên Nhân viên"
+                    Margin="0,5,0,5"
+                    VerticalAlignment="Center"
+                    FontSize="20" Foreground="#FF1DB7A4" Height="24" Width="133"
+                    />
+                    <TextBlock x:Name="TenNV" HorizontalAlignment="Left"
+                    Grid.Column="4"
+                    TextWrapping="Wrap"
+                    Text=""
+                    VerticalAlignment="Center"
+                    FontSize="20" Height="24" Margin="138,5,0,5" Width="269" Grid.ColumnSpan="3"/>
+
+                </Grid>
+                <ListView x:Name="HangMua" Height="204" HorizontalAlignment="Center" FontSize="20" Margin="46,0" VerticalAlignment="Top" VerticalContentAlignment="Center">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="STT" DisplayMemberBinding="{Binding STT}" Width="100"/>
+                            <GridViewColumn Header="Tên hàng" DisplayMemberBinding="{Binding TenHang}" Width="250"/>
+                            <GridViewColumn Header="SL" DisplayMemberBinding="{Binding SoLuong}" Width="100"/>
+                            <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding DonGia,StringFormat='#,##0'}" Width="170"/>
+                            <GridViewColumn Header="Thành tiền" DisplayMemberBinding="{Binding ThanhTien, StringFormat='#,##0'}" Width="170"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Grid Height="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="300*"/>
+                        <ColumnDefinition Width="400*"/>
+                        <ColumnDefinition Width="300*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left"
+                    Grid.Column="0"
+                    TextWrapping="Wrap"
+                    Text="Tổng tiền: "
+                    VerticalAlignment="Center"
+                    FontSize="20" Margin="20,5,0,5" Foreground="#FF1DB7A4" Height="24" Width="634" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="ThanhTien" HorizontalAlignment="Left"
+                    Grid.Column="2"
+                    TextWrapping="Wrap"
+                    Text="0"
+                    VerticalAlignment="Center"
+                    FontSize="20" Height="24" Margin="0,5,0,5" Width="634" Grid.ColumnSpan="1"/>
+
+                </Grid>
+                <Grid Height="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25*"/>
+                        <ColumnDefinition Width="148*"/>
+                        <ColumnDefinition Width="34*"/>
+                        <ColumnDefinition Width="208*"/>
+                        <ColumnDefinition Width="277*"/>
+                        <ColumnDefinition Width="208*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left"
+                    Grid.Column="0"
+                    TextWrapping="Wrap"
+                    Text="Khách đưa "
+                    VerticalAlignment="Center"
+                    FontSize="20" Margin="20,8,0,8" Foreground="#FF1DB7A4" Height="24" Width="634" Grid.ColumnSpan="5"/>
+                    <TextBox x:Name="KhachDua" HorizontalAlignment="Left"
+                    Grid.Column="2"
+                    TextWrapping="Wrap"
+                    Text=""
+                    GotFocus="KhachDua_GotFocus"
+                    LostFocus="KhachDua_LostFocus"
+                    VerticalAlignment="Center"
+                    FontSize="20" Height="32" Margin="34.2,0,0,8" Width="188" PreviewTextInput="KhachDua_PreviewTextInput" Grid.ColumnSpan="2" TextChanged="KhachDua_TextChanged"/>
+                </Grid>
+                <Grid Height="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="300*"/>
+                        <ColumnDefinition Width="400*"/>
+                        <ColumnDefinition Width="300*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Left"
+                    Grid.Column="0"
+                    TextWrapping="Wrap"
+                    Text="Thối lại: "
+                    VerticalAlignment="Center"
+                    FontSize="20" Margin="20,5,0,5" Foreground="#FF1DB7A4" Height="24" Width="634" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="ThoiLai" HorizontalAlignment="Left"
+                    Grid.Column="2"
+                    TextWrapping="Wrap"
+                    Text="0"
+                    VerticalAlignment="Center"
+                    FontSize="20" Height="24" Margin="0,5,0,5" Width="634" Grid.ColumnSpan="1"/>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </Border>
+</local:BasePage>

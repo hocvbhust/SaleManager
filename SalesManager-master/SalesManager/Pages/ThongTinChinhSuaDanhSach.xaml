@@ -1,0 +1,186 @@
+﻿<local:BasePage x:Class="SalesManager.ThongTinChinhSuaDanhSach"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SalesManager"
+      xml:lang="vi-VN"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="800"
+      Title="ThongTinChinhSuaDanhSach">
+
+    <StackPanel>
+        <Border x:Name="Title" 
+                    Height="50"
+                    Margin="20 10 20 10"
+                    CornerRadius="20">
+            <TextBlock 
+                Text="CHỈNH SỬA HÀNG HÓA" 
+                HorizontalAlignment="Center" 
+                FontFamily="{StaticResource MyriadBold}"
+                FontSize="36" 
+                Foreground="{StaticResource TitleBrush}"/>
+        </Border>
+        <Border BorderThickness="1" Padding="5" Margin="30" CornerRadius="20" Background="AliceBlue">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="20 10 5 10">
+                    <TextBlock
+                Text = "MÃ HÀNG:"
+                HorizontalAlignment = "Left"
+                FontFamily="{StaticResource MyriadBold}"
+                FontSize = "22"
+                Foreground = "#FF1DB7A4"
+                    Margin="3,15,0,5" Height="25"
+                />
+                    <TextBlock
+                Text = "MÃ LÔ:"
+                HorizontalAlignment = "Left"
+                FontFamily="{StaticResource MyriadBold}"
+                FontSize = "22"
+                Foreground = "#FF1DB7A4"
+                    Margin="3,8,0,8" Height="23"
+                />
+                    <TextBlock
+                Text = "TÊN HÀNG:"
+                HorizontalAlignment = "Left"
+                FontFamily="{StaticResource MyriadBold}"
+                FontSize = "22"
+                Foreground = "#FF1DB7A4"
+                    Margin=" 3 8 0 5"
+                />
+                    <TextBlock
+                Text = "NGÀY NHẬP:"
+                HorizontalAlignment = "Left"
+                FontFamily="{StaticResource MyriadBold}"
+                FontSize = "22"
+                Foreground = "#FF1DB7A4"
+                    Margin=" 3 8 0 8"
+               />
+                    <TextBlock
+                Text = "HẠN SỬ DỤNG:"
+                HorizontalAlignment = "Left"
+                FontFamily="{StaticResource MyriadBold}"
+                FontSize = "22"
+                Foreground = "#FF1DB7A4"
+                    Margin="3,8,0,5" Height="25"
+                />
+                    <TextBlock
+                Text = "SỐ LƯỢNG:"
+                HorizontalAlignment = "Left"
+                FontFamily="{StaticResource MyriadBold}"
+                FontSize = "22"
+                Foreground = "#FF1DB7A4"
+                    Margin=" 3 8"
+                />
+                    <TextBlock
+                Text = "ĐƠN VỊ TÍNH:"
+                HorizontalAlignment = "Left"
+                FontFamily="{StaticResource MyriadBold}"
+                FontSize = "22"
+                Foreground = "#FF1DB7A4"
+                    Margin=" 3 8"
+                />
+
+                    <TextBlock
+                Text = "ĐƠN GIÁ:"
+                HorizontalAlignment = "Left"
+                FontFamily="{StaticResource MyriadBold}"
+                FontSize = "22"
+                Foreground = "#FF1DB7A4"
+                    Margin=" 3"
+                />
+                </StackPanel>
+                <StackPanel Grid.Column="1" Margin="0 10 30 5">
+                    <TextBox x:Name = "MAHG"
+                     IsReadOnly="True"
+                     VerticalAlignment = "Top"
+                             FontSize = "22"
+                         Margin=" 1"
+                      />
+
+                    <TextBox x:Name = "MALOO"
+                     IsReadOnly="True"
+                    VerticalAlignment = "Top"
+                             FontSize = "22"
+                         Margin=" 1"
+                  />
+
+                    <TextBox x:Name = "TENHG"
+                     VerticalAlignment = "Top"
+                             FontSize = "22"
+                         Margin=" 1"
+                
+                    />
+
+                    <TextBox x:Name = "NGAY"    
+                     IsReadOnly="True"
+                    VerticalAlignment = "Top"
+                        FontSize = "22"
+                         Margin=" 1"
+            
+                    />
+
+                    <DatePicker x:Name = "HAN"
+                    VerticalAlignment = "Top"
+                FontSize = "22"
+                            Margin=" 1 0 350 0 "
+                    />
+                    <TextBox x:Name = "SL"
+                             IsReadOnly="True"
+                    VerticalAlignment = "Top"
+                FontSize = "22"
+                         Margin=" 1"
+                    />
+                    <ComboBox x:Name = "DONVI"
+                     IsReadOnly="True"
+                    VerticalAlignment = "Top"
+               FontSize = "22"
+                          Margin=" 1"
+                    >
+                        <ComboBoxItem Content="Cái"/>
+                        <ComboBoxItem Content="Kg"/>
+                        <ComboBoxItem Content="Lốc"/>
+                        <ComboBoxItem Content="Chục"/>
+                    </ComboBox>
+                    <TextBox x:Name = "GIA"
+                    VerticalAlignment = "Top"
+                    FontSize = "22"
+                         Margin=" 1" GotFocus="GIA_GotFocus" LostFocus="GIA_LostFocus"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Grid Margin="0 100 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button
+                Content = "LƯU" Grid.Column="0"
+                HorizontalAlignment = "Center"
+                FontFamily="{StaticResource MyriadBold}"
+                FontSize = "20"
+                Foreground = "White"
+                 Width = "200" Click = "suathongtin" />
+
+            <Button
+                Content = "TRỞ LẠI" Grid.Column="1"
+                HorizontalAlignment = "Center"
+                FontFamily="{StaticResource MyriadBold}"
+                FontSize = "20"
+                Foreground = "White"
+                 Click = "trolai" Width="200" />
+            <Button
+                Content = "XÓA" Grid.Column="2"
+                HorizontalAlignment = "Center"
+                FontFamily="{StaticResource MyriadBold}"
+                FontSize = "20"
+                Foreground = "White"
+                 Width = "200" Click = "xoathongtin" />
+        </Grid>
+    </StackPanel>
+</local:BasePage>

@@ -1,0 +1,144 @@
+﻿<local:BasePage x:Class="SalesManager.QuenMatKhau"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SalesManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="1200"
+      Title="QuenMatKhau"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MyriadLight}">
+    <Grid>
+        <Border Height="450"
+                    Background="AliceBlue"
+                    CornerRadius="10"
+                    Width="1000">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60*"></RowDefinition>
+                    <RowDefinition Height="35*"></RowDefinition>
+                    <RowDefinition Height="35*"></RowDefinition>
+                    <RowDefinition Height="35*"></RowDefinition>
+                    <RowDefinition Height="35*"></RowDefinition>
+                    <RowDefinition Height="70"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBlock 
+                        FontSize="50" 
+                        FontFamily="{StaticResource MyriadBold}" 
+                        FontWeight="Bold" 
+                        Foreground="#0288D1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center" Height="76">
+                        Quên mật khẩu
+                    </TextBlock>
+                    <TextBlock
+                    Style="{StaticResource MaterialDesignBody1TextBlock}"
+                       HorizontalAlignment="Center"
+                        VerticalAlignment="Bottom"       
+                        Width="510"
+                        FontSize="22" Margin="152,0,138,0"  >
+                         Nhập cmnd/cccd và gmail để xác nhận tạo mật khẩu mới.
+
+                    </TextBlock>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBlock Text="CMND/CCCD:"
+                               FontSize="20" 
+                               VerticalAlignment="Center" Margin="90,21,538,22"
+                              ></TextBlock>
+                    <TextBox  x:Name="CMND"
+                              Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                              FontSize="20"
+                              Margin="218,-5,90,20"
+                              PreviewTextInput="CMND_PreviewTextInput"/>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <TextBlock Text="Gmail:"
+                               FontSize="20" 
+                               VerticalAlignment="Center" Margin="90,21,458,22"
+                              ></TextBlock>
+                    <TextBox
+                        Style="{StaticResource 
+                        MaterialDesignFloatingHintTextBox}" 
+                        FontSize="20"
+                        Margin="154,-5,559,20"
+                        x:Name="Gmail"
+                        TextChanged="Gmail_TextChanged"
+                        PreviewTextInput="Gmail_PreviewTextInput"/>
+                    <TextBlock Text="@gmail.com"
+                               FontSize="20" 
+                               VerticalAlignment="Center" Margin="449,24,184,19"
+                              ></TextBlock>
+                    <Button
+                        Foreground="{StaticResource ForegroundLightBrush}"
+                        FontFamily="{StaticResource MyriadBold}"
+                        Click="Button_Click"
+                        FontSize="22"
+                        Margin="566,12,224,16" RenderTransformOrigin="0.886,-0.656" Height="Auto"
+                        >
+                        Lấy mã xác nhận
+                    </Button>
+                    <TextBox
+                            x:Name="MXN"
+                            materialDesign:HintAssist.Hint="Mã xác nhận"
+                            FontSize="20"
+                            Style="{StaticResource 
+                            MaterialDesignFloatingHintTextBox}" 
+                            Margin="784,-4,90,20" />
+                </Grid>
+                <Grid Grid.Row="3">
+
+                    <TextBlock Text="Mật khẩu mới:"
+                               FontSize="20" 
+                               VerticalAlignment="Center" Margin="90,20,488,22" Grid.ColumnSpan="2"
+                              ></TextBlock>
+                    <PasswordBox 
+                                FontSize="20"
+                                 x:Name="MatKhau" 
+                                Margin="232,16,90,17" />
+                </Grid>
+                <Grid Grid.Row="4">
+                    <TextBlock Text="Nhập lại mật khẩu:"
+                               FontSize="20" 
+                               VerticalAlignment="Center" Margin="90,21,488,22"
+                              ></TextBlock>
+                    <PasswordBox 
+                                 FontSize="20"
+                                 x:Name="XNMatKhau"
+                                Margin="268,16,90,17"/>
+                </Grid>
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Foreground="{StaticResource ForegroundLightBrush}"
+                        FontFamily="{StaticResource MyriadBold}"
+                        FontSize="20"
+                        Grid.Column="0" 
+                        Click="GetPass_Click"
+                        Margin="233,10,50,19" Height="Auto">
+                        Tạo mật khẩu mới
+                    </Button>
+                    <Button
+                        Foreground="{StaticResource ForegroundLightBrush}"
+                        FontFamily="{StaticResource MyriadBold}"
+                        FontSize="20"
+                        Grid.Column="1"
+                        Click="Back_Click" 
+                        Margin="50,10,220,19" Height="Auto">
+                        Quay lại đăng nhập
+                    </Button>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</local:BasePage>

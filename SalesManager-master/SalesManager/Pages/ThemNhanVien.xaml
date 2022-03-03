@@ -1,0 +1,179 @@
+﻿<local:BasePage x:Class="SalesManager.ThemNhanVien"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SalesManager"
+      mc:Ignorable="d" 
+      xml:lang="vi-VN"
+      d:DesignHeight="700" d:DesignWidth="950"
+      Title="ThemNhanVien">
+
+    <Grid>
+        <Border VerticalAlignment="Top" x:Name="Title">
+            <TextBlock 
+                TextWrapping="Wrap" 
+                Text="THÊM NHÂN VIÊN"
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Center" 
+                FontFamily="{StaticResource MyriadBold}" 
+                FontSize="36" 
+                Foreground="{StaticResource TitleBrush}"
+                Margin="10 "
+                />
+        </Border>
+        <Grid Margin="0 80 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70*"/>
+                <ColumnDefinition Width="208*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock
+                    HorizontalAlignment="Right"
+                    TextWrapping="Wrap"
+                    Text="Họ tên: "
+                    Margin="50 10 0 10"   
+                    VerticalAlignment="Center"
+                    FontSize="28" Foreground="#FF1DB7A4" 
+                    />
+                <TextBlock
+                    HorizontalAlignment="Right"
+                    TextWrapping="Wrap"
+                    Text="Ngày sinh: "
+                    Margin="50 10 0 10" 
+                    VerticalAlignment="Center"
+                    FontSize="28" Foreground="#FF1DB7A4" 
+                    />
+                <TextBlock
+                    HorizontalAlignment="Right"
+                    TextWrapping="Wrap"
+                    Text="CMND: "
+                    Margin="50 10 0 10" 
+                    VerticalAlignment="Center"
+                    FontSize="28" Foreground="#FF1DB7A4" 
+                    />
+                <TextBlock
+                    HorizontalAlignment="Right"
+                    TextWrapping="Wrap"
+                    Text="Địa chỉ:  "
+                    Margin="50 10 0 10" 
+                    VerticalAlignment="Center"
+                    FontSize="28" Foreground="#FF1DB7A4" 
+                    />
+                <TextBlock
+                    HorizontalAlignment="Right"
+                    TextWrapping="Wrap"
+                    Text="Ngày vào làm:  "
+                    Margin="30 10 0 10" 
+                    VerticalAlignment="Center"
+                    FontSize="28" Foreground="#FF1DB7A4" 
+                    />
+                <TextBlock
+                    HorizontalAlignment="Right"
+                    TextWrapping="Wrap"
+                    Text="Mật khẩu:  "
+                    Margin="50 10 0 10" 
+                    VerticalAlignment="Center"
+                    FontSize="28" Foreground="#FF1DB7A4" 
+                    />
+                <TextBlock
+                    HorizontalAlignment="Right"
+                    TextWrapping="Wrap"
+                    Text="Nhập lại mật khẩu:  "
+                    Margin="0 10 0 10" 
+                    VerticalAlignment="Center"
+                    FontSize="28" Foreground="#FF1DB7A4" Width="234" 
+                    />
+                <TextBlock
+                    HorizontalAlignment="Right"
+                    TextWrapping="Wrap"
+                    Text="Gmail:  "
+                    Margin="50 10 0 10" 
+                    VerticalAlignment="Center"
+                    FontSize="28" Foreground="#FF1DB7A4" 
+                    />
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBox x:Name="tbHOTEN" 
+                    VerticalAlignment="Center"
+                    Height="46"
+                    TextWrapping="Wrap"
+                    FontSize="24" 
+                    Margin="10,0,100,10"  />
+                <DatePicker x:Name="ngSinh"
+                    VerticalAlignment="Center"
+                    Height="39" 
+                    FontSize="24"                  
+                    Margin="10,0,300,10" />
+                <Grid Margin="10,0,100,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="tbCMND" 
+                    Height="40"
+                    Grid.Column="0"
+                    TextWrapping="Wrap"
+                    FontSize="24"
+                    Margin="0,0,5,0" 
+                    PreviewTextInput="tbCMND_PreviewTextInput"/>
+                    <Button 
+                        Grid.Column="1" 
+                        Content="Kiểm tra"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Foreground="{StaticResource ForegroundLightBrush}"
+                        FontFamily="{StaticResource MyriadBold}"
+                        FontSize="20"
+                        Click="kiemtra2_Click"/>
+                </Grid>
+                <TextBox x:Name="tbDIACHI" 
+                    VerticalAlignment="Center"
+                    Height="46"
+                    TextWrapping="Wrap"
+                    FontSize="24" 
+                    Margin="10,0,100,10" />
+                <DatePicker x:Name="ngVL" 
+                    Height="47"
+                    FontSize="24" 
+                    Margin="10,0,300,10" />
+                <PasswordBox x:Name="tbMK" 
+                    Height="44"
+                    FontSize="24" 
+                    Margin="10,0,100,10" />
+                <PasswordBox x:Name="tbRMK" 
+                    FontSize="24" 
+                    Margin="10,0,100,10" />
+                <TextBox x:Name="tbGmail"
+                    Height="40"
+                    TextWrapping="Wrap"
+                    FontSize="24" 
+                    Margin="10,0,100,10" />
+            </StackPanel>
+        </Grid>
+        <Grid Margin="0 530 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" 
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            Content="THÊM"
+            FontSize="30"
+            Width="150"
+            Height="45"
+            FontWeight="Bold"
+            Foreground="{StaticResource ForegroundLightBrush}"
+            Click="Them_Click"/>
+            <Button Grid.Column="1" 
+            Style="{StaticResource MaterialDesignRaisedButton}"  
+            Content="HỦY"
+            FontSize="30"
+            Width="150"
+            Height="45"
+            FontWeight="Bold"
+            Foreground="{StaticResource ForegroundLightBrush}"
+            Click="Huy_Click"/>
+        </Grid>
+    </Grid>
+</local:BasePage>
+    

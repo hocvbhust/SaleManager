@@ -1,0 +1,99 @@
+﻿<local:BasePage x:Class="SalesManager.TaoMaNhanVien"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SalesManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="950"
+      Title="TaoMaNhanVien">
+
+    <Grid>
+        
+        <TextBlock 
+                x:Name="Title"
+                Text=" SỬA MẬT KHẨU" 
+                HorizontalAlignment="Center" 
+                FontFamily="{StaticResource MyriadBold}" 
+                FontSize="40" 
+                Foreground="{StaticResource TitleBrush}"
+                Margin="327,20,314.4,650" Width="309"  />
+        <Grid Margin="0 125 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.3*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock
+                Text = "HỌ TÊN: "
+                 FontFamily="{StaticResource MyriadBold}"
+                FontSize = "25"
+                HorizontalAlignment="Right"
+                Margin="20"
+                Foreground = "#FF1DB7A4"/>
+                <TextBlock
+                Text = "NHẬP MẬT KHẨU: "
+                FontFamily="{StaticResource MyriadBold}"
+                FontSize = "25"
+                Foreground = "#FF1DB7A4"
+                HorizontalAlignment="Right"
+                Margin="20" />
+                <TextBlock
+                Text = "NHẬP MẬT KHẨU MỚI: "
+                 FontFamily="{StaticResource MyriadBold}"
+                FontSize = "25"
+                Foreground = "#FF1DB7A4"
+                HorizontalAlignment="Right"
+                Margin="20" />
+                <TextBlock
+                Text = "NHẬP LẠI MẬT KHẨU MỚI: "
+                 FontFamily="{StaticResource MyriadBold}"
+                FontSize = "25"
+                Foreground = "#FF1DB7A4"
+                HorizontalAlignment="Right"
+                Margin="20" />
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBox x:Name = "tennv"
+                Height = "41"
+                FontSize = "25"
+                TextWrapping = "Wrap"
+                VerticalAlignment = "Top"
+                Margin = "0 10 100 22"
+                IsReadOnly="True"/>
+                <PasswordBox x:Name = "MK"
+                Height = "41"
+                FontSize = "25"
+                VerticalAlignment = "Top"
+                Margin = "0 0 100 0" />
+                <PasswordBox x:Name = "pass"
+                Height = "41"
+                FontSize = "25"
+                Margin = "0 25 100 0"
+                VerticalAlignment = "Top"/>
+                <PasswordBox x:Name = "repass"
+                Height = "49"
+                FontSize = "25"
+                VerticalAlignment = "Top"
+                Margin = "0 25 100 0" />
+            </StackPanel>
+        </Grid>
+            
+
+        <Button
+            Content="LƯU"   
+            HorizontalAlignment="Left" 
+                FontFamily="{StaticResource MyriadBold}" 
+                FontSize="25" 
+                Foreground="White"
+                Margin="154,369,0,48.6" Click="Button_Click_1" Width="150"    />
+        <Button
+            Content="HỦY"     
+            HorizontalAlignment="Right" 
+                FontFamily="{StaticResource MyriadBold}" 
+                FontSize="25" 
+                Foreground="White"
+                Margin="0,369,155,48.6" Click="Button_Click" Width="150" />
+
+    </Grid>
+</local:BasePage>
