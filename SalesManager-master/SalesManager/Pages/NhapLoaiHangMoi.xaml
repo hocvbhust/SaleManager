@@ -72,7 +72,7 @@
                            FontSize="20"
                            FontWeight="Bold"
                            >
-                           
+
                 </ComboBox>
             </Grid>
             <Grid>
@@ -106,14 +106,14 @@
                 </ComboBox>
             </Grid>
             <Grid>
-            <Grid Margin="0 50">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="86*"/>
-                    <ColumnDefinition Width="314*"/>
-                    <ColumnDefinition Width="314*"/>
-                    <ColumnDefinition Width="86*"/>
-                </Grid.ColumnDefinitions>
-                <Button 
+                <Grid Margin="0 50">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="86*"/>
+                        <ColumnDefinition Width="314*"/>
+                        <ColumnDefinition Width="314*"/>
+                        <ColumnDefinition Width="86*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button 
                     Content="Trở về"
                     Grid.Column="2"
                     FontSize="24"
@@ -121,7 +121,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
                     Width="180" Height="54" Margin="66.6,10,67,0" Click="Trove_click"/>
-                <Button 
+                    <Button 
                     Content="Thêm mới"
                     Grid.Column="1"
                     FontSize="24"
@@ -129,7 +129,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
                     Width="180" Height="54" Margin="66.6,10,67,0" Click="Nhap_Click"/>
-            </Grid>
+                </Grid>
                 <Grid Margin="0 50"  Name="grid_update">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="86*"/>
@@ -156,6 +156,36 @@
                 </Grid>
             </Grid>
             <StackPanel>
+                <TextBox Width="300"
+                         Height="30"
+                         FontSize="20"
+                         HorizontalAlignment="Center"
+                         TextChanged="tb_Search_TextChanged"
+                         Name="tb_search">
+                    <TextBox.Style>
+                        <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                            <Style.Resources>
+                                <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                                    <VisualBrush.Visual>
+                                        <Label Content="Tìm kiếm theo tên hàng" Foreground="LightGray" />
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </Style.Resources>
+                            <Style.Triggers>
+                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="Text" Value="{x:Null}">
+                                    <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocused" Value="True">
+                                    <Setter Property="Background" Value="White" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+
                 <ListView Margin="20,50,40,60" Name="lvGoods" FontSize="20" Height="500" Width="900">
                     <ListView.Resources>
                         <Style TargetType="ListViewItem">

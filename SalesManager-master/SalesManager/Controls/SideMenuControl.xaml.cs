@@ -56,10 +56,10 @@ namespace SalesManager
                 this.CoThongBao.Visibility = Visibility.Hidden;
             }
             Count = NotificationControl.listNotification.Count;
-             sqlConn = new MySqlConnection(ConfigurationManager.ConnectionStrings["connectionStringMySQL"].ConnectionString);
-            sqlConn.Open();
-             sqlCommand = new MySqlCommand($"DELETE FROM NHAPHANG WHERE HANSD < CURDATE()", sqlConn);
-             reader = sqlCommand.ExecuteReader();
+            //sqlConn = new MySqlConnection(ConfigurationManager.ConnectionStrings["connectionStringMySQL"].ConnectionString);
+            //sqlConn.Open();
+            //sqlCommand = new MySqlCommand($"DELETE FROM NHAPHANG ", sqlConn);
+            //reader = sqlCommand.ExecuteReader();
         }
         #endregion
 

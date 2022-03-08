@@ -60,7 +60,7 @@ namespace SalesManager
             LiveTime.Interval = TimeSpan.FromSeconds(1);
             LiveTime.Tick += timer_Tick;
             LiveTime.Start();
-            var sqlConn = new MySqlConnection(ConfigurationManager.ConnectionStrings["connectionStringMySQL"].ConnectionString);
+            /*var sqlConn = new MySqlConnection(ConfigurationManager.ConnectionStrings["connectionStringMySQL"].ConnectionString);
             sqlConn.Open();
             var sqlCommand = new MySqlCommand("SELECT SUM(SOLUONG), TENHANG, A.MAHANG, DVT FROM NHAPHANG A, LOAIHANG B WHERE A.MAHANG=B.MAHANG  GROUP BY A.MAHANG, TENHANG, DVT", sqlConn);
             var reader = sqlCommand.ExecuteReader();
@@ -110,9 +110,9 @@ namespace SalesManager
             }
             reader.Close();
             sqlConn.Close();
+            */
 
-
-            sqlConn = new MySqlConnection(ConfigurationManager.ConnectionStrings["connectionStringMySQL"].ConnectionString);
+           /* sqlConn = new MySqlConnection(ConfigurationManager.ConnectionStrings["connectionStringMySQL"].ConnectionString);
             sqlConn.Open();
             sqlCommand = new MySqlCommand("SELECT * FROM NHAPHANG A, LOAIHANG B WHERE A.MAHANG = B.MAHANG", sqlConn);
             reader = sqlCommand.ExecuteReader();
@@ -162,7 +162,7 @@ namespace SalesManager
                 }
             }
             reader.Close();
-            sqlConn.Close();
+            sqlConn.Close();*/
         }
         void timer_Tick(object sender, EventArgs e)
         {

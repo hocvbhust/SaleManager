@@ -15,8 +15,8 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Width="140" Height="40" Margin="21,10,0,0" Click="TroVe_Click"/>
-    <StackPanel>
-        <TextBlock x:Name="Title"
+        <StackPanel>
+            <TextBlock x:Name="Title"
                 TextWrapping="Wrap" 
                 Text="Quét Barcode"
                 VerticalAlignment="Top" 
@@ -27,13 +27,13 @@
                 Foreground="{StaticResource TitleBrush}"
                 Margin="20 20 20 20"
                 />
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="63*"/>
-                <ColumnDefinition Width="208*"/>
-                <ColumnDefinition Width="530*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="63*"/>
+                    <ColumnDefinition Width="208*"/>
+                    <ColumnDefinition Width="530*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock
                     HorizontalAlignment="Left"
                     Grid.Column="1"
                     TextWrapping="Wrap"
@@ -41,7 +41,7 @@
                     VerticalAlignment="Center"
                     FontSize="24" Margin="23.6,14,0,14.6" Foreground="#FF1DB7A4"
                     />
-            <TextBox x:Name="txt_barcode" 
+                <TextBox x:Name="txt_barcode" 
                     Grid.ColumnSpan="2"
                     Grid.Column="2"
                     HorizontalAlignment="Left"
@@ -52,55 +52,55 @@
                     Width="520"
                     Margin="0 0 0 14.6"
                     TextChanged="txt_barcode_TextChanged"/>
-        </Grid>
-        <StackPanel>
-            <ListView Margin="20,50,40,60" Name="lvBarcode" FontSize="20" Height="500" Width="900">
-                <ListView.Resources>
-                    <Style TargetType="ListViewItem">
-                        <Style.Triggers>
-                            <Trigger Property="IsKeyboardFocusWithin" Value="True">
-                                <Setter Property="IsSelected" Value="True"/>
-                            </Trigger>
-                        </Style.Triggers>
-                        <EventSetter Event="PreviewGotKeyboardFocus" Handler="SelectCurrentItem"/>
-                        <Setter Property="Height" Value="30" />
-                        <Setter Property="BorderBrush" Value="Blue"/>
-                        <Setter Property="BorderThickness" Value="1"/>
-                        <Setter Property="Background" Value="#E7F8FE"/>
-                    </Style>
-                    <Style TargetType="{x:Type GridViewColumnHeader}">
-                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="Focusable" Value="false"/>
-                    </Style>
-                </ListView.Resources>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="{x:Type ListViewItem}">
-                        <EventSetter Event="MouseDoubleClick"  Handler="ListViewItem_MouseDoubleClick"/>
-                    </Style>
-                </ListView.ItemContainerStyle>
-                <ListView.View>
-                    <GridView >
-                        <GridViewColumn Header = "Mã Hàng" DisplayMemberBinding = "{Binding Code}" Width = "100"></GridViewColumn>
-                        <GridViewColumn Header = "Tên Hàng" DisplayMemberBinding = "{Binding Name}" Width = "200"></GridViewColumn>
-                        <GridViewColumn Header = "Đơn Giá" DisplayMemberBinding = "{Binding PriceText}" Width = "150"></GridViewColumn>
-                        <GridViewColumn Header = "Số Lượng" Width = "150" >
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBox Margin="60,0,0,0" Text="{Binding Count}" HorizontalContentAlignment="Center" LostFocus="TextBox_LostFocus"></TextBox>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header = "Thành tiền" DisplayMemberBinding = "{Binding TotalPriceText}" Width = "150"></GridViewColumn>
-                        <GridViewColumn Header = "Thực hiện">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Content="Xóa" Click="Button_Click" Height="25" Width="60" VerticalAlignment="Center"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            </Grid>
+            <StackPanel>
+                <ListView Margin="20,50,40,60" Name="lvBarcode" FontSize="20" Height="500" Width="900">
+                    <ListView.Resources>
+                        <Style TargetType="ListViewItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                    <Setter Property="IsSelected" Value="True"/>
+                                </Trigger>
+                            </Style.Triggers>
+                            <EventSetter Event="PreviewGotKeyboardFocus" Handler="SelectCurrentItem"/>
+                            <Setter Property="Height" Value="30" />
+                            <Setter Property="BorderBrush" Value="Blue"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="Background" Value="#E7F8FE"/>
+                        </Style>
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Focusable" Value="false"/>
+                        </Style>
+                    </ListView.Resources>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <EventSetter Event="MouseDoubleClick"  Handler="ListViewItem_MouseDoubleClick"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.View>
+                        <GridView >
+                            <GridViewColumn Header = "Mã Hàng" DisplayMemberBinding = "{Binding Code}" Width = "100"></GridViewColumn>
+                            <GridViewColumn Header = "Tên Hàng" DisplayMemberBinding = "{Binding Name}" Width = "200"></GridViewColumn>
+                            <GridViewColumn Header = "Đơn Giá" DisplayMemberBinding = "{Binding PriceText}" Width = "150"></GridViewColumn>
+                            <GridViewColumn Header = "Số Lượng" Width = "150" >
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Margin="60,0,0,0" Text="{Binding Count}" HorizontalContentAlignment="Center" LostFocus="TextBox_LostFocus"></TextBox>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header = "Thành tiền" DisplayMemberBinding = "{Binding TotalPriceText}" Width = "150"></GridViewColumn>
+                            <GridViewColumn Header = "Thực hiện">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Xóa" Click="Button_Click" Height="25" Width="60" VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"></ColumnDefinition>
@@ -135,6 +135,6 @@
                     <Button Grid.Column="3" Content="Hủy Đơn" FontFamily="{StaticResource MyriadBold}" Click="Huy_Don_Click"  FontSize="20" Foreground="White" HorizontalAlignment="Center"  Width="150" Height="35"/>
                 </Grid>
             </StackPanel>
-    </StackPanel>
-</Grid>
+        </StackPanel>
+    </Grid>
 </local:BasePage >

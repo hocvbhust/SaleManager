@@ -28,7 +28,7 @@ namespace SalesManager
     {
         MySqlConnection sqlConn = new MySqlConnection(ConfigurationManager.ConnectionStrings["connectionStringMySQL"].ConnectionString);
         ObservableCollection<Goods> listGoods = new ObservableCollection<Goods>();
-        Goods updatedGoods = new Goods(); 
+        Goods updatedGoods = new Goods();
         public NhapLoaiHangMoi()
         {
             InitializeComponent();
@@ -42,10 +42,8 @@ namespace SalesManager
             else
             {
                 sqlConn.Open();
-                var sqlCommand = new MySqlCommand("SELECT COUNT(*) FROM LOAIHANG A, Goods_Type B where A.TENHANG = @TENHANG and A.Type_id = B.Type_id " +
-                    "and B.Type_Name = @TYPENAME", sqlConn);
+                var sqlCommand = new MySqlCommand("SELECT COUNT(*) FROM LOAIHANG where TENHANG = @TENHANG ", sqlConn);
                 sqlCommand.Parameters.AddWithValue("@TENHANG", textTenHang.Text);
-                sqlCommand.Parameters.AddWithValue("@TYPENAME", cbb_goodsType.Text);
                 int count = int.Parse(sqlCommand.ExecuteScalar().ToString());
                 if (count > 0)
                 {
@@ -54,19 +52,36 @@ namespace SalesManager
                 else
                 {
                     sqlCommand.Parameters.Clear();
+                    sqlCommand.CommandText = "select max(MAHANG) from LOAIHANG";
+                    int mahang_max = 0;
+                    if (!String.IsNullOrEmpty(sqlCommand.ExecuteScalar().ToString()))
+                    {
+                        mahang_max = int.Parse(sqlCommand.ExecuteScalar().ToString());
+                    }
                     sqlCommand.CommandText = "select type_id from Goods_Type where TRIM( Type_Name) = '" + cbb_goodsType.Text + "'";
                     int type_id = int.Parse(sqlCommand.ExecuteScalar().ToString());
                     sqlCommand.Parameters.Clear();
-                    sqlCommand.CommandText = "INSERT INTO LOAIHANG (TENHANG, DVT, Type_id) VALUES " + "(@TENHANG,@DVT,@TYPEID)";
+                    sqlCommand.CommandText = "INSERT INTO LOAIHANG (MAHANG, TENHANG, DVT, Type_id, Type_Name) VALUES " + "(@MAHANG,@TENHANG,@DVT,@TYPEID, @TYPENAME)";
+                    sqlCommand.Parameters.AddWithValue("@MAHANG", mahang_max + 1);
                     sqlCommand.Parameters.AddWithValue("@TENHANG", textTenHang.Text);
                     sqlCommand.Parameters.AddWithValue("@DVT", comBoxDVT.Text);
                     sqlCommand.Parameters.AddWithValue("@TYPEID", type_id);
+                    sqlCommand.Parameters.AddWithValue("@TYPENAME", cbb_goodsType.Text);
                     sqlCommand.ExecuteNonQuery();
                     sqlCommand.Dispose();
                     MessageBox.Show("Thêm dữ liệu thành công");
 
                     textTenHang.SelectAll();
                     comBoxDVT.Text = "Cái";
+                    listGoods.Add(new Goods()
+                    {
+                        Code = mahang_max + 1 + "",
+                        Name = textTenHang.Text,
+                        DVT = comBoxDVT.Text,
+                        GoodsType = cbb_goodsType.Text
+                    });
+                    lvGoods.ItemsSource = listGoods;
+                    lvGoods.Items.Refresh();
                 }
                 sqlConn.Close();
             }
@@ -137,8 +152,26 @@ namespace SalesManager
         {
             Button button = sender as Button;
             Goods good = button.DataContext as Goods;
-
-            //lvGoods.Remove(good);
+            MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa " + good.Name + " ?", "My App", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    {
+                        //delete records in the database
+                        sqlConn.Open();
+                        var sqlCommand = new MySqlCommand("delete from LOAIHANG where MAHANG = @MAHANG", sqlConn);
+                        sqlCommand.Parameters.AddWithValue("@MAHANG", good.Code);
+                        sqlCommand.ExecuteNonQuery();
+                        sqlCommand.Dispose();
+                        //update the listview
+                        listGoods.Remove(good);
+                        lvGoods.Items.Refresh();
+                    }
+                    break;
+                case MessageBoxResult.No:
+                    break;
+            }
+            sqlConn.Close();
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
@@ -155,7 +188,7 @@ namespace SalesManager
             sqlCommand.Parameters.AddWithValue("@TypeName", updatedGoods.GoodsType);
             int type_id = int.Parse(sqlCommand.ExecuteScalar().ToString());
             sqlCommand.Parameters.Clear();
-           
+
             sqlCommand = new MySqlCommand("update LOAIHANG set  TENHANG = @TENHANG, DVT = @DVT, Type_id = @Type_id where MAHANG = @MAHANG", sqlConn);
             sqlCommand.Parameters.AddWithValue("@MAHANG", updatedGoods.Code);
             sqlCommand.Parameters.AddWithValue("@TENHANG", textTenHang.Text);
@@ -167,12 +200,20 @@ namespace SalesManager
             listGoods.Single(c => c.Code == updatedGoods.Code).Name = textTenHang.Text;
             listGoods.Single(c => c.Code == updatedGoods.Code).DVT = comBoxDVT.Text;
             listGoods.Single(c => c.Code == updatedGoods.Code).GoodsType = cbb_goodsType.Text;
+            lvGoods.ItemsSource = listGoods;
             lvGoods.Items.Refresh();
             MessageBox.Show("Cập nhật loại hàng thành công !!!");
             sqlConn.Close();
             textTenHang.Text = "";
             comBoxDVT.Text = "Cái";
             grid_update.Visibility = Visibility.Hidden;
+        }
+
+        private void tb_Search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var listGoodsSearch = new ObservableCollection<Goods>(listGoods.Where(x => x.Name.ToUpper().Contains(tb_search.Text.ToUpper())).ToList());
+            lvGoods.ItemsSource = listGoodsSearch;
+            lvGoods.Items.Refresh();
         }
     }
 }
